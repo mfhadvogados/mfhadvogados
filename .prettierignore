@@ -1,0 +1,11 @@
+.agents/
+.codex/
+.next/
+.artifacts/
+node_modules/
+test-results/
+playwright-report/
+package-lock.json
+next-env.d.ts
+skills-lock.json
+*.tsbuildinfo
