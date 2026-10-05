@@ -51,4 +51,12 @@ Não há formulário nem coleta de dados no site. WhatsApp, telefone, Instagram 
 
 Copie `.env.example` para `.env.local` e preencha `SITE_URL` com a URL oficial confirmada antes do build publicado. Isso configura canonical, `metadataBase`, URLs sociais, sitemap e URL nos dados estruturados. Sem esse dado, canonical e URL institucional são omitidos; sitemap permanece vazio e Next usa localhost para a imagem social durante o desenvolvimento.
 
-Os materiais não informam e-mail, LinkedIn ou horários de atendimento. Esses dados não foram acrescentados. A publicação em hospedagem não faz parte desta implementação.
+Os materiais não informam e-mail, LinkedIn ou horários de atendimento. Esses dados não foram acrescentados.
+
+## Publicar na Vercel
+
+O `vercel.json` da raiz configura o framework `nextjs`, o comando `npm run build` e a saída `.next`. Essas propriedades substituem os respectivos valores do painel para o deploy, evitando a procura incorreta por uma pasta de saída `public`. A configuração segue a [documentação oficial da Vercel](https://vercel.com/docs/project-configuration/vercel-json).
+
+No projeto da Vercel, mantenha Root Directory na raiz do repositório, onde está `package.json`. Em Settings → Build and Deployment, selecione Next.js e remova o override de Output Directory `public`, usando o padrão do framework. Cadastre `SITE_URL` nas variáveis do ambiente publicado com a URL oficial confirmada.
+
+Faça commit e push de `vercel.json` e das alterações para a branch conectada. O novo deploy precisa usar esse commit; redeploy de um commit anterior não inclui a correção. A pasta `.next` é gerada no build e permanece fora do Git.
