@@ -230,7 +230,6 @@ ol {
   z-index: -3;
   object-fit: cover;
   object-position: 50% 43%;
-  filter: grayscale(1);
 }
 .hero__shade {
   position: absolute;
@@ -342,7 +341,7 @@ ol {
 .practice-paths small {
   display: block;
   margin-top: 3px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .practice-paths svg {
@@ -378,7 +377,7 @@ ol {
 .about__foundation p {
   padding-left: 22px;
   border-left: 1px solid var(--gold);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .about__figure {
@@ -722,7 +721,7 @@ ol {
   color: var(--muted);
 }
 .litigation__note {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   border-top: 1px solid var(--line);
   padding-top: 20px;
@@ -888,36 +887,8 @@ ol {
   max-width: 520px;
   font-size: 14px;
 }
-.contact__grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 110px;
+.contact__channels {
   margin-top: 48px;
-}
-.contact__address {
-  display: flex;
-  gap: 22px;
-  border-top: 1px solid var(--line);
-  padding-top: 26px;
-}
-.contact__address > svg {
-  color: var(--gold-dark);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.contact__address h3 {
-  font-size: 16px;
-  font-weight: 500;
-}
-.contact__address address {
-  font-style: normal;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.9;
-  margin-top: 18px;
-}
-.contact__address .text-link {
-  margin-top: 16px;
 }
 
 [data-reveal-state="pending"] {
@@ -963,8 +934,7 @@ ol {
     gap: 40px;
   }
   .litigation__body,
-  .differentials__grid,
-  .contact__grid {
+  .differentials__grid {
     gap: 60px;
   }
   .professionals__heading {
@@ -1040,9 +1010,6 @@ ol {
     grid-template-columns: repeat(2, 1fr);
     gap: 45px 30px;
   }
-  .contact__grid {
-    gap: 45px;
-  }
   .practice-paths a:first-child {
     padding-right: 25px;
   }
@@ -1110,7 +1077,7 @@ ol {
   }
   .hero__inner {
     height: auto;
-    padding-top: 64px;
+    padding-top: 104px;
     padding-bottom: 26px;
     min-height: min(640px, calc(100svh - 80px));
   }
@@ -1119,8 +1086,8 @@ ol {
   }
   .hero__shade {
     background:
-      linear-gradient(90deg, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.48)),
-      linear-gradient(0deg, rgba(0, 0, 0, 0.85), transparent 90%);
+      linear-gradient(90deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.36)),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.78), transparent 90%);
   }
   .hero h1 {
     font-size: clamp(30px, 9vw, 50px);
@@ -1337,16 +1304,8 @@ ol {
   .contact__heading > p:last-child {
     font-size: 15px;
   }
-  .contact__grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  .contact__channels {
     margin-top: 32px;
-  }
-  .contact__address {
-    gap: 18px;
-  }
-  .contact__address address {
-    font-size: 14px;
   }
   .button {
     gap: 20px;
@@ -1367,7 +1326,7 @@ ol {
     --gutter: 22px;
   }
   .hero__inner {
-    padding-top: 48px;
+    padding-top: 80px;
   }
   .hero__bottom {
     flex-direction: column;

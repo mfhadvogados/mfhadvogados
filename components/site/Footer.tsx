@@ -1,8 +1,8 @@
-import { ArrowUp, Phone } from "lucide-react";
+import { ArrowUp, MapPin, Phone } from "lucide-react";
 import { navigation, practiceAreas, site } from "@/lib/site-content";
 import { ContactLink } from "./ContactChannels";
 import { Brand } from "./Brand";
-import { InstagramIcon, WhatsAppIcon } from "./SocialIcons";
+import { GoogleIcon, InstagramIcon, WhatsAppIcon } from "./SocialIcons";
 
 export function Footer() {
   const year = new Intl.DateTimeFormat("pt-BR", {
@@ -25,7 +25,11 @@ export function Footer() {
               <small>Advogados Associados</small>
             </span>
           </a>
-          <a className="site-footer__back" href="#inicio">
+          <a
+            className="site-footer__back"
+            href="#inicio"
+            aria-label="Voltar ao início"
+          >
             <span>Voltar ao início</span>
             <ArrowUp size={19} strokeWidth={1.3} aria-hidden="true" />
           </a>
@@ -93,6 +97,18 @@ export function Footer() {
                 <ContactLink channel="instagram">
                   <InstagramIcon size={18} />
                   <span>{site.instagramHandle}</span>
+                </ContactLink>
+              </li>
+              <li>
+                <ContactLink channel="google">
+                  <GoogleIcon size={18} />
+                  <span>Ver no Google</span>
+                </ContactLink>
+              </li>
+              <li>
+                <ContactLink channel="maps">
+                  <MapPin size={18} strokeWidth={1.5} aria-hidden="true" />
+                  <span>Ver localização</span>
                 </ContactLink>
               </li>
             </ul>

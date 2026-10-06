@@ -31,13 +31,16 @@ npm run test:e2e
 - `components/ui/sheet.tsx`: Sheet shadcn/ui com Radix, foco, Escape e bloqueio da rolagem.
 - `lib/site-content.ts`: conteúdo oficial, profissionais, inscrições e contatos.
 - `lib/site-assets.ts`: somente as cinco fotografias identificadas do MFH.
+- `lib/reviews.ts`: cinco avaliações do Google e respectivas fotos fornecidas em `feedbacks/`.
+- `components/site/Reviews.tsx`: carrossel responsivo com cards uniformes e leitura completa em diálogo.
 - `lib/site-url.ts`: domínio configurável; sem endereço presumido.
 - `scripts/prepare-brand-assets.mjs`: reprodução dos ícones e imagem Open Graph a partir dos PNGs oficiais e da fotografia hero. Execute `npm run assets:branding`.
 - `docs/auditoria.md`: fontes, direção visual, decisões e validação.
+- `docs/revisao-apresentacao.md`: conferência final dos PDFs e revisão para apresentação ao cliente.
 
-Homepage: hero → duas frentes → escritório e equipe → assessoria e áreas → prevenção → contencioso → diferenciais → sócios → contato → rodapé.
+Homepage: hero → duas frentes → escritório e equipe → assessoria e áreas → prevenção → contencioso → diferenciais → sócios → contato → avaliações → rodapé.
 
-A revisão final passou em 36 testes de browser, incluindo dez larguras de 320 a 1920 px, telas baixas, alinhamento de CTAs, legibilidade, menu lateral, fluxos por teclado e WhatsApp flutuante nas cores da identidade.
+A revisão passou em 44 testes de browser, incluindo dez larguras de 320 a 1920 px, telas baixas, alinhamento de CTAs, legibilidade, menu lateral, fluxos por teclado, WhatsApp flutuante e carrossel de avaliações. Os cinco diálogos de leitura completa foram conferidos em 320×480 px; os controles do carrossel reservam espaço para o botão flutuante.
 
 ## Materiais oficiais
 
@@ -45,7 +48,9 @@ Os dois PDFs da raiz são as fontes institucionais. A pasta `materialGraficoMFH/
 
 Montserrat Light, Regular, Medium, SemiBold e Bold foram identificadas nos PDFs. A fonte variável já instalada pelo Fontsource é carregada pelo `next/font/local`, sem consultas externas. Fotografias usam `next/image`, dimensões estáveis, tamanhos responsivos e carregamento prioritário no hero.
 
-Não há formulário nem coleta de dados no site. WhatsApp, telefone, Instagram e localização são links diretos baseados nos PDFs. As biografias são expansíveis com `details`; as áreas e os dois fluxos possuem controle por teclado. O movimento respeita `prefers-reduced-motion`.
+Não há formulário nem coleta de dados no site. WhatsApp, telefone e Instagram são links diretos baseados nos PDFs; os links de Google e Maps foram fornecidos pelo responsável pelo site. Endereço e localização aparecem no rodapé. As biografias são expansíveis com `details`; as áreas e os dois fluxos possuem controle por teclado. O movimento respeita `prefers-reduced-motion`.
+
+As cinco avaliações de `feedbacks/feedbacksTexto.txt` são reproduzidas com as fotos correspondentes de `feedbacks/imgFeedback/`. As notas de cinco estrelas foram informadas pelo responsável pelo site. O carrossel usa rolagem nativa, setas, teclado e deslize, sem autoplay nem dependência adicional. Cards têm altura uniforme; “Ler mais” aparece quando o texto excede o espaço disponível e abre um diálogo com a avaliação completa. Sem JavaScript, o texto permanece integralmente disponível. A seção não calcula nem anuncia uma nota média do escritório.
 
 ## Domínio para publicação
 

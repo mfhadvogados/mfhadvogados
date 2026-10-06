@@ -13,6 +13,11 @@ export const site = {
   whatsappHref: "https://wa.me/5548999424925",
   instagramHref: "https://www.instagram.com/mfhadvempresa/",
   instagramHandle: "@mfhadvempresa",
+  // Links do Google e Maps fornecidos pelo responsável pelo site.
+  googleHref:
+    "https://www.google.com/search?q=Melara%2C+Fuhrmann+e+Huinka+Advogados&rlz=1C1ONGR_pt-PTBR1161BR1161&oq=Melara%2C+Fuhrmann+e+Huinka+Advogados&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABjvBTIHCAIQABjvBTIKCAMQABiABBiiBDIHCAQQABjvBTIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBBzUxOGowajeoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8",
+  mapsHref:
+    "https://www.google.com/maps/place/Melara,+Fuhrmann+e+Huinka+Advogados/@-27.5939189,-48.553936,17z/data=!3m1!4b1!4m6!3m5!1s0x95273823a98fe5cd:0x42632a285ba31c94!8m2!3d-27.5939237!4d-48.5513557!16s%2Fg%2F11sczx1tlq?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D",
 } as const;
 
 export const navigation = [
@@ -33,6 +38,16 @@ export const contacts = {
     label: "Instagram",
     href: site.instagramHref,
     action: site.instagramHandle,
+  },
+  google: {
+    label: "Google",
+    href: site.googleHref,
+    action: "Ver no Google",
+  },
+  maps: {
+    label: "Localização",
+    href: site.mapsHref,
+    action: "Ver localização",
   },
 } as const;
 export type ContactChannel = keyof typeof contacts;

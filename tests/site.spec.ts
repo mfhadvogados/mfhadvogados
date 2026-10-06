@@ -15,7 +15,7 @@ const invalidContent =
   /lorem ipsum|projeto demonstrativo|profissional fictício/i;
 const forbiddenImage = /reserva/i;
 const officialImage =
-  /fotohero|fotoEquipe|flavioAugusto|rafaelaFernandes|francieleKarine|logo-v[12]/;
+  /fotohero|fotoEquipe|flavioAugusto|rafaelaFernandes|francieleKarine|logo-v[12]|ricardoKaram|rodrigoMelendez|anaCarolineNascimento|tayanoLima|floeliDoPradoSantos/;
 
 async function expectNoHorizontalOverflow(page: Page) {
   const overflow = await page.evaluate(
@@ -390,6 +390,11 @@ test("contato expõe canais confirmados e links internos têm destino", async ({
   await expect(
     page.locator('a[href="https://www.instagram.com/mfhadvempresa/"]').first(),
   ).toBeVisible();
+  await expect(contact.locator("address")).toHaveCount(0);
+  await expect(page.locator("footer address")).toContainText("Osmar Cunha");
+  await expect(
+    page.locator("footer").getByRole("link", { name: /Ver localização/ }),
+  ).toHaveAttribute("href", /google\.com\/maps\/place\/Melara/);
   await expect(
     page.locator('a[href^="mailto:"], a[href*="linkedin.com"]'),
   ).toHaveCount(0);

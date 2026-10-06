@@ -3,6 +3,7 @@ import { Hero, PracticePaths } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { ScrollReveal } from "@/components/site/ScrollReveal";
+import { Reviews } from "@/components/site/Reviews";
 import { site } from "@/lib/site-content";
 import { siteUrl } from "@/lib/site-url";
 import {
@@ -59,6 +60,7 @@ export default function Home() {
         <Differentials />
         <Professionals />
         <Contact />
+        <Reviews />
       </main>
       <Footer />
       <FloatingWhatsApp />

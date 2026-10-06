@@ -67,6 +67,26 @@ A segunda revisão incluiu alturas de 360 e 480 px e larguras intermediárias de
 
 O WhatsApp flutuante usa o glifo da marca em SVG local, branco sobre preto, detalhe dourado em hover/foco e destino oficial confirmado. Mede 52–56 px, respeita a área de segurança do dispositivo e fica atrás do Sheet. Testes comprovam que não cobre o CTA do hero em 320×480, 390×844 e 640×360; a margem do rodapé preserva a leitura dos textos finais. Os SVGs sociais são incorporados ao código, sem requisições externas; a geometria do Instagram foi conferida no repositório Simple Icons.
 
+## Avaliações fornecidas e ajustes posteriores
+
+Os cinco textos de `feedbacks/feedbacksTexto.txt` foram reproduzidos integralmente, preservando nomes, pontuação e parágrafos. As cinco fotos de 79×79 px em `feedbacks/imgFeedback/` foram associadas pelos nomes: Ricardo Karam, Rodrigo Melendez, Ana Caroline Nascimento, Tayano Lima e Floeli Do Prado Santos. As notas de cinco estrelas foram informadas pelo responsável pelo site; não foi criada nota média nem contagem global de avaliações do Google.
+
+O carrossel fica após a seção de contato e imediatamente acima do rodapé. Exibe um, dois ou três cards conforme a largura, todos com altura de 364 px. A rolagem é nativa, com encaixe por card, botões, teclado e deslize. Não há autoplay ou dependência nova. “Ler mais” aparece apenas quando o texto excede a área disponível e abre um diálogo acessível com o conteúdo completo, preservando a altura dos cards. Escape fecha o diálogo e devolve o foco ao botão; sem JavaScript, o texto completo fica disponível no próprio card.
+
+Endereço e link do Maps permanecem apenas no rodapé, conforme solicitado. No mobile, a marca e apresentação vêm antes do contato e dos links de navegação. O hero usa as cores originais da fotografia, sem filtro cinza adicional, com camada escura mais leve e texto 32–40 px abaixo nas telas comuns. O menu foi reduzido discretamente em largura e tipografia.
+
+Foram adicionados seis testes específicos de avaliações, incluindo correspondência literal ao TXT, fotos por autor, estrelas, altura uniforme, posição antes do rodapé, setas, teclado, limites, leitura completa, foco e funcionamento sem JavaScript. A suíte passou com 42 testes; lint, formatação, TypeScript e build também concluíram.
+
 ## Dados pendentes
 
 Domínio oficial para `SITE_URL`. E-mail, LinkedIn e horários somente se a cliente desejar publicar esses canais e fornecer os dados. Não existe formulário ou política de tratamento presumida; adicionar coleta de dados exige definir o fluxo real e o texto correspondente.
+
+## Revisão final para apresentação — 6 de outubro de 2026
+
+As 12 páginas dos dois PDFs foram novamente confrontadas com a versão implementada, incluindo os textos das áreas, biografias expandidas, etapas dos fluxos e dados do rodapé. Não foram encontradas divergências factuais. A redação é uma adaptação editorial para a web; nomes, inscrições, datas, serviços e contatos permanecem fiéis às fontes. A conferência detalhada está em [revisao-apresentacao.md](./revisao-apresentacao.md).
+
+Foram capturadas todas as seções em 320, 390, 768 e 1440 px, com inspeção complementar do layout em 600, 1024 e 1920 px. A revisão ajustou textos auxiliares de 11 para 12 px no tablet e desktop, preservando os pesos da Montserrat. A seta de retorno ao início recebeu nome acessível mesmo quando sua legenda fica oculta no celular. Os resumos das avaliações usam o espaço de leitura sem linhas vazias entre parágrafos; o diálogo e a versão sem JavaScript preservam os parágrafos originais. Os controles do carrossel reservam espaço horizontal para o WhatsApp em larguras abaixo de 1200 px.
+
+O build de produção concluiu e a suíte completa passou com **44 testes em 46,3 segundos**. Lint e formatação também passaram. Os dois testes adicionados verificam a separação entre os controles e o WhatsApp em cinco larguras, o nome do retorno ao topo e os cinco diálogos de avaliação em 320×480 px. As capturas finais ficam em `.artifacts/client-review/`, com sufixo `-final.png`; os arquivos temporários não são publicados.
+
+O contorno de foco nos fundos claros do cabeçalho e dos canais de contato usa o dourado escuro; nos fundos pretos, usa o dourado original. A checagem complementar de cores de textos em fundos sólidos não encontrou contraste abaixo de 4,5:1 para leitura ou 3:1 para títulos grandes nos elementos examinados; o hero sobre fotografia foi revisado visualmente. Isso não constitui certificação de acessibilidade.

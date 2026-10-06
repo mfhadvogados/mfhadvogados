@@ -16,7 +16,6 @@ import {
   litigationSteps,
   preventionSteps,
   professionals,
-  site,
 } from "@/lib/site-content";
 import { PracticeAreas } from "./PracticeAreas";
 import { StrategyFlow } from "./StrategyFlow";
@@ -363,28 +362,8 @@ export function Contact() {
             jurídica. Conheça de perto a atuação do MFH.
           </p>
         </div>
-        <div className="contact__grid">
+        <div className="contact__channels">
           <ContactChannels />
-          <div className="contact__address">
-            <MapPin size={23} strokeWidth={1.25} aria-hidden="true" />
-            <div>
-              <h3>Encontre o escritório</h3>
-              <address>
-                {site.address}
-                <br /> {site.location}
-                <br /> CEP {site.postalCode}
-              </address>
-              <a
-                className="text-link"
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.address}, ${site.location}, ${site.postalCode}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ver localização <ArrowUpRight size={17} aria-hidden="true" />
-                <span className="sr-only"> (abre em nova aba)</span>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
