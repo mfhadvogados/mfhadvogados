@@ -1,8 +1,8 @@
 # Revisão para apresentação — MFH Advogados
 
-Data: 6 de outubro de 2026.
+Revisão visual anterior: 6 de outubro de 2026. Atualização de domínio, SEO e avaliações: 6 de outubro de 2026.
 
-A versão foi revisada em conteúdo, composição visual e funcionamento. Não foram identificadas divergências factuais entre os textos institucionais do site e os dois PDFs fornecidos. A redação foi adaptada para leitura na web, sem acrescentar áreas de atuação, qualificações ou resultados ausentes dos materiais.
+A versão institucional foi revisada em conteúdo, composição visual e funcionamento. Não foram identificadas divergências factuais entre os textos do site e os dois PDFs fornecidos. A redação foi adaptada para leitura na web, sem acrescentar áreas de atuação, qualificações ou resultados ausentes dos materiais. A seção de validação histórica abaixo registra os resultados dessa revisão; a entrega posterior de SEO é documentada em [seo-audit.md](./seo-audit.md).
 
 ## Conferência dos materiais
 
@@ -25,7 +25,7 @@ Inscrições conferidas: Flavio Augusto Boreggio Melara — OAB/SC 15526B; Rafae
 
 Contato conferido: `(48) 99942-4925`, `@mfhadvempresa`, Av. Prefeito Osmar Cunha, 183, Bloco B, sala 806, Florianópolis/SC, CEP 88015-900. Endereço e Maps ficam no rodapé conforme solicitado.
 
-Os links do Google e Maps são os fornecidos pelo responsável pelo site. Os cinco depoimentos e as fotos correspondem ao TXT e às imagens de `feedbacks/`; as cinco estrelas foram informadas pelo responsável. A revisão verificou a reprodução desses arquivos, sem consultar ou atribuir uma nota média ao perfil do Google.
+Os links do Google e Maps são os fornecidos pelo responsável pelo site. A primeira revisão conferiu os cinco depoimentos então disponíveis; a implementação atual reproduz os dez textos e fotos fornecidos em `feedbacks/`. As cinco estrelas foram informadas pelo responsável. A conferência utiliza os arquivos fornecidos, sem atribuir uma nota média ao perfil do Google.
 
 ## Revisão visual e de uso
 
@@ -37,7 +37,7 @@ Os contornos de foco do cabeçalho e dos canais de contato usam a variante mais 
 
 Foram preservados o hero com a cor original da fotografia e o texto mais baixo no celular, o menu mais estreito, os links simples no rodapé e sua ordem mobile: marca/apresentação, contato, navegação e informações finais.
 
-## Validação
+## Validação histórica da revisão visual
 
 - Build de produção concluído; TypeScript verificado pelo build.
 - Lint e formatação aprovados.
@@ -47,8 +47,16 @@ Foram preservados o hero com a cor original da fotografia e o texto mais baixo n
 - Textos das avaliações comparados ao TXT e fotos associadas por autor. Os cinco diálogos foram testados em 320×480 px, com fechamento acessível e retorno do foco.
 - Funcionamento do carrossel e leitura completa sem JavaScript verificados.
 
-Os testes usam Chrome no Windows com diferentes viewports. Safari e aparelhos físicos não foram testados nesta revisão. As capturas finais estão em `.artifacts/client-review/`, com sufixo `-final.png`.
+Esses resultados pertencem à revisão visual anterior. Os testes utilizaram Chrome no Windows com diferentes viewports; Safari e aparelhos físicos não foram testados naquela revisão. As capturas utilizadas na inspeção foram artefatos temporários, sem publicação ou permanência exigida no repositório.
 
-## Configuração para publicação
+## Entrega posterior de SEO e configuração para publicação
 
-O domínio oficial ainda precisa ser informado em `SITE_URL` para completar canonical, sitemap e URLs institucionais dos metadados. Essa pendência não impede a apresentação visual local. E-mail, LinkedIn e horários não constam dos materiais e não foram acrescentados.
+O domínio oficial `https://www.mfhadvogados.com.br` foi confirmado e está fixado em `lib/site-url.ts`, completando canonical, sitemap e URLs institucionais dos metadados sem variável `SITE_URL`. As páginas `/assessoria-juridica-empresarial` e `/contencioso-estrategico-de-massa` reutilizam o texto das duas frentes já conferidas nos PDFs.
+
+`lib/service-pages.ts`, `lib/seo.ts` e `StructuredData.tsx` concentram a identificação das páginas, os metadados e os dados estruturados. A imagem de compartilhamento usa a assinatura oficial preta sobre fundo branco; a logo pública está em `public/marca/mfh-advogados-logo-preta.png`. A mensagem inicial do WhatsApp é centralizada em `lib/site-content.ts`. E-mail, LinkedIn e horários não constam dos materiais e não foram acrescentados.
+
+`.env.example` contém somente `GOOGLE_SITE_VERIFICATION`, opcional para verificação HTML de uma propriedade por prefixo de URL no Search Console. A verificação de domínio utiliza DNS. A configuração da Vercel mantém Next.js, `npm run build` e saída `.next`.
+
+A validação atual passou em **63 testes de navegador em cerca de um minuto**, além de build, lint e formatação. Foram preservados os 119 blocos institucionais conferidos e os dez depoimentos reproduzem literalmente o TXT. As três páginas foram inspecionadas visualmente em 390 e 1440 px; os testes cobrem dez larguras da homepage e quatro das páginas de serviços.
+
+O resultado detalhado da validação atual está em [seo-audit.md](./seo-audit.md). O plano de conteúdo, autoridade e acompanhamento está em [seo-roadmap.md](./seo-roadmap.md).

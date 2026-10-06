@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/site-url";
+import { absoluteUrl } from "@/lib/site-url";
+import { servicePages } from "@/lib/service-pages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return siteUrl ? [{ url: `${siteUrl}/` }] : [];
+  return ["/", ...Object.values(servicePages).map(({ path }) => path)].map(
+    (path) => ({ url: absoluteUrl(path) }),
+  );
 }

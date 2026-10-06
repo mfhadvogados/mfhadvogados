@@ -1,5 +1,7 @@
 # Auditoria e direção visual — MFH Advogados
 
+Registro da implementação e das revisões visuais anteriores, realizadas em 6 de outubro de 2026. As contagens de testes nas seções históricas descrevem aquelas revisões. A atualização posterior de SEO, domínio e avaliações está descrita ao final; a auditoria técnica atual está em [seo-audit.md](./seo-audit.md).
+
 ## Análise antes da implementação
 
 A base foi examinada integralmente: App Router Next.js 16.3.5, React 19.2, TypeScript estrito, Tailwind 4, shadcn/ui com Radix Dialog, Lucide e Playwright. A aplicação tinha uma única rota institucional, dados de demonstração, estilos de outra identidade e imports de imagens inexistentes. Framework, versões, lockfile, lint, scripts de build e Sheet foram preservados. A skill `.agents/skills/frontend-design/SKILL.md` foi lida integralmente, junto aos guias locais de imagens, fontes, Server/Client Components e metadados em `node_modules/next/dist/docs/`.
@@ -24,7 +26,7 @@ Textos foram reorganizados para leitura na web, preservando fatos. Objetos textu
 
 Inscrições conferidas na página 3 de ambos: Flavio Augusto Boreggio Melara, OAB/SC 15526B; Rafaela Fernandes Fuhrmann, OAB/SC 38603 e OAB/SP 503494; Franciele Karine Huinka, OAB/SC 45692. Informações de experiência em anos permanecem conforme os currículos dos materiais, sem extrapolação automática.
 
-Telefone/WhatsApp `(48) 99942-4925`, Instagram `@mfhadvempresa` e endereço Av. Prefeito Osmar Cunha, 183, Bloco B, sala 806, Florianópolis/SC, CEP 88015-900 foram confirmados na página 6. Não constam domínio, e-mail, LinkedIn ou horário de funcionamento.
+Telefone/WhatsApp `(48) 99942-4925`, Instagram `@mfhadvempresa` e endereço Av. Prefeito Osmar Cunha, 183, Bloco B, sala 806, Florianópolis/SC, CEP 88015-900 foram confirmados na página 6. Os PDFs não informam domínio, e-mail, LinkedIn ou horário de funcionamento. O responsável confirmou posteriormente o domínio `https://www.mfhadvogados.com.br`.
 
 ## Plano visual e revisão do plano
 
@@ -38,14 +40,14 @@ O plano foi confrontado com a skill: retirados ondas, cores herdadas, métricas 
 
 ## Arquivos gráficos utilizados
 
-- `fotohero.jpg`: fundo do hero e imagem de compartilhamento.
+- `fotohero.jpg`: fundo do hero, preservando a fotografia regional.
 - `fotoEquipe.jpeg`: imagem institucional ampla.
 - `flavioAugusto.jpeg`, `rafaelaFernandes.jpeg`, `francieleKarine.jpeg`: retratos correspondentes, conferidos com os PDFs.
-- `logo-v1-preto@3x.png`: assinatura completa no header e imagem social.
+- `logo-v1-preto@3x.png`: assinatura completa no header, imagem social sobre fundo branco e logo pública.
 - `logo-v2-preto@3x.png`: monograma em fundo claro e ícones de navegador.
 - `logo-v2-branco@3x.png`: menu, rodapé e marca d’água em fundo escuro.
 
-Brand usa SVG como janela de enquadramento do PNG oficial, removendo apenas o canvas transparente, com proporções preservadas. Não recria o desenho da marca. Ícones 192×192 e 180×180 e Open Graph 1200×630 são derivados de modo reprodutível com Sharp. Os originais não foram alterados.
+Brand usa SVG como janela de enquadramento do PNG oficial, removendo apenas o canvas transparente, com proporções preservadas. Não recria o desenho da marca. Ícones 192×192 e 180×180, Open Graph 1200×630 e `public/marca/mfh-advogados-logo-preta.png` são derivados de modo reprodutível com Sharp. A imagem social atual usa a assinatura preta centralizada sobre fundo branco. Os originais não foram alterados.
 
 ## Interações, acessibilidade e desempenho
 
@@ -53,13 +55,13 @@ Sheet lateral com foco restrito, bloqueio de rolagem, Escape, restauração de f
 
 HTML semântico, um H1, headings funcionais, link de salto, foco visível, textos alternativos nas fotos e SVGs reconhecíveis de WhatsApp e Instagram. Revelações discretas por IntersectionObserver apenas em títulos e imagem de equipe; conteúdo é visível sem JavaScript e com movimento reduzido. Imagens abaixo da dobra usam lazy loading e `sizes`; hero usa `preload` da API Next 16. Componentes estáticos permanecem no servidor.
 
-SEO: título, descrição, idioma pt-BR, Open Graph, Twitter, imagem social, ícones oficiais, robots e dados estruturados `LegalService`. Canonical e URLs absolutas dependem de `SITE_URL` confirmado. O sitemap não inventa domínio; retorna entradas somente quando configurado.
+SEO da implementação inicial: título, descrição, idioma pt-BR, Open Graph, Twitter, imagem social, ícones oficiais, robots e dados estruturados `LegalService`. Na atualização posterior, o domínio confirmado foi fixado em `lib/site-url.ts`; canonical, URLs absolutas e sitemap passaram a utilizar `https://www.mfhadvogados.com.br`, sem variável `SITE_URL`.
 
 ## Limpeza
 
 Substituídos dados, conteúdo, metadados, cores e estilos da base. Removidos WaveLines e seus estilos, CSS de interações e revelações substituído, logo pública antiga, nomes antigos em package/lock e documentação desatualizada. Helpers genéricos, Sheet, controle acessível das áreas e observador de revelação foram reaproveitados. Nenhuma rota com conteúdo institucional antigo permanece. PDFs, fotos, logos, skills e histórico Git foram preservados.
 
-## Validação
+## Validação histórica da implementação visual
 
 Lint, verificação de formatação e build de produção concluíram. Os 36 testes MFH passaram no Chrome em 36,4 segundos, sem erros de console ou HTTP. A suíte contempla todas as larguras solicitadas: 320, 360, 375, 390, 414, 768, 1024, 1280, 1440 e 1920 px. Foram conferidas também capturas de desktop, tablet e smartphones, incluindo hero, equipe, contencioso, sócios, contato, rodapé e Sheet. Testes utilizam Chrome no Windows; não substituem teste em Safari ou aparelhos físicos.
 
@@ -67,9 +69,9 @@ A segunda revisão incluiu alturas de 360 e 480 px e larguras intermediárias de
 
 O WhatsApp flutuante usa o glifo da marca em SVG local, branco sobre preto, detalhe dourado em hover/foco e destino oficial confirmado. Mede 52–56 px, respeita a área de segurança do dispositivo e fica atrás do Sheet. Testes comprovam que não cobre o CTA do hero em 320×480, 390×844 e 640×360; a margem do rodapé preserva a leitura dos textos finais. Os SVGs sociais são incorporados ao código, sem requisições externas; a geometria do Instagram foi conferida no repositório Simple Icons.
 
-## Avaliações fornecidas e ajustes posteriores
+## Histórico das primeiras avaliações e ajustes visuais
 
-Os cinco textos de `feedbacks/feedbacksTexto.txt` foram reproduzidos integralmente, preservando nomes, pontuação e parágrafos. As cinco fotos de 79×79 px em `feedbacks/imgFeedback/` foram associadas pelos nomes: Ricardo Karam, Rodrigo Melendez, Ana Caroline Nascimento, Tayano Lima e Floeli Do Prado Santos. As notas de cinco estrelas foram informadas pelo responsável pelo site; não foi criada nota média nem contagem global de avaliações do Google.
+Na primeira implementação das avaliações, os cinco textos então fornecidos em `feedbacks/feedbacksTexto.txt` foram reproduzidos integralmente, preservando nomes, pontuação e parágrafos. As cinco fotos de 79×79 px em `feedbacks/imgFeedback/` foram associadas pelos nomes: Ricardo Karam, Rodrigo Melendez, Ana Caroline Nascimento, Tayano Lima e Floeli Do Prado Santos. A atualização posterior ampliou a seção para dez avaliações com as respectivas fotos. As notas de cinco estrelas foram informadas pelo responsável pelo site; não foi criada nota média nem contagem global de avaliações do Google.
 
 O carrossel fica após a seção de contato e imediatamente acima do rodapé. Exibe um, dois ou três cards conforme a largura, todos com altura de 364 px. A rolagem é nativa, com encaixe por card, botões, teclado e deslize. Não há autoplay ou dependência nova. “Ler mais” aparece apenas quando o texto excede a área disponível e abre um diálogo acessível com o conteúdo completo, preservando a altura dos cards. Escape fecha o diálogo e devolve o foco ao botão; sem JavaScript, o texto completo fica disponível no próprio card.
 
@@ -77,16 +79,28 @@ Endereço e link do Maps permanecem apenas no rodapé, conforme solicitado. No m
 
 Foram adicionados seis testes específicos de avaliações, incluindo correspondência literal ao TXT, fotos por autor, estrelas, altura uniforme, posição antes do rodapé, setas, teclado, limites, leitura completa, foco e funcionamento sem JavaScript. A suíte passou com 42 testes; lint, formatação, TypeScript e build também concluíram.
 
-## Dados pendentes
+## Dados institucionais disponíveis
 
-Domínio oficial para `SITE_URL`. E-mail, LinkedIn e horários somente se a cliente desejar publicar esses canais e fornecer os dados. Não existe formulário ou política de tratamento presumida; adicionar coleta de dados exige definir o fluxo real e o texto correspondente.
+O domínio oficial `https://www.mfhadvogados.com.br` foi confirmado e incorporado ao código. E-mail, LinkedIn e horários somente se a cliente desejar publicar esses canais e fornecer os dados. Não existe formulário ou política de tratamento presumida; adicionar coleta de dados exige definir o fluxo real e o texto correspondente.
 
-## Revisão final para apresentação — 6 de outubro de 2026
+## Revisão anterior para apresentação — 6 de outubro de 2026
 
 As 12 páginas dos dois PDFs foram novamente confrontadas com a versão implementada, incluindo os textos das áreas, biografias expandidas, etapas dos fluxos e dados do rodapé. Não foram encontradas divergências factuais. A redação é uma adaptação editorial para a web; nomes, inscrições, datas, serviços e contatos permanecem fiéis às fontes. A conferência detalhada está em [revisao-apresentacao.md](./revisao-apresentacao.md).
 
 Foram capturadas todas as seções em 320, 390, 768 e 1440 px, com inspeção complementar do layout em 600, 1024 e 1920 px. A revisão ajustou textos auxiliares de 11 para 12 px no tablet e desktop, preservando os pesos da Montserrat. A seta de retorno ao início recebeu nome acessível mesmo quando sua legenda fica oculta no celular. Os resumos das avaliações usam o espaço de leitura sem linhas vazias entre parágrafos; o diálogo e a versão sem JavaScript preservam os parágrafos originais. Os controles do carrossel reservam espaço horizontal para o WhatsApp em larguras abaixo de 1200 px.
 
-O build de produção concluiu e a suíte completa passou com **44 testes em 46,3 segundos**. Lint e formatação também passaram. Os dois testes adicionados verificam a separação entre os controles e o WhatsApp em cinco larguras, o nome do retorno ao topo e os cinco diálogos de avaliação em 320×480 px. As capturas finais ficam em `.artifacts/client-review/`, com sufixo `-final.png`; os arquivos temporários não são publicados.
+Naquela revisão, o build de produção concluiu e a suíte completa passou com **44 testes em 46,3 segundos**. Lint e formatação também passaram. Os dois testes adicionados verificaram a separação entre os controles e o WhatsApp em cinco larguras, o nome do retorno ao topo e os cinco diálogos de avaliação em 320×480 px. As capturas utilizadas foram artefatos temporários de inspeção, sem publicação ou permanência exigida no repositório.
 
 O contorno de foco nos fundos claros do cabeçalho e dos canais de contato usa o dourado escuro; nos fundos pretos, usa o dourado original. A checagem complementar de cores de textos em fundos sólidos não encontrou contraste abaixo de 4,5:1 para leitura ou 3:1 para títulos grandes nos elementos examinados; o hero sobre fotografia foi revisado visualmente. Isso não constitui certificação de acessibilidade.
+
+## Atualização de SEO e publicação — 6 de outubro de 2026
+
+O domínio confirmado está centralizado em `lib/site-url.ts`. As duas rotas `/assessoria-juridica-empresarial` e `/contencioso-estrategico-de-massa` organizam as frentes existentes e reutilizam o texto institucional dos PDFs. `lib/service-pages.ts` identifica essas páginas; `lib/seo.ts` compõe metadados e entidades; `StructuredData.tsx` publica o grafo compartilhado. Sitemap, canonical, Open Graph e Twitter utilizam as três URLs oficiais.
+
+A imagem social foi atualizada para a assinatura preta sobre fundo branco, com uma logo pública própria para identificação institucional. O WhatsApp utiliza uma mensagem inicial centralizada em `lib/site-content.ts`. A seção de avaliações reproduz os dez textos e fotos atualmente fornecidos em `feedbacks/`, preservando a ausência de nota média atribuída ao escritório.
+
+`.env.example` oferece somente `GOOGLE_SITE_VERIFICATION`, opcional para verificação HTML por prefixo de URL no Search Console. A propriedade de domínio é verificada por DNS. `vercel.json` mantém o framework Next.js e a saída `.next`.
+
+A validação atual passou em **63 testes de navegador em cerca de um minuto**, além de build, lint e formatação. A conferência de preservação dos 119 blocos institucionais passou; os dez depoimentos foram comparados literalmente ao TXT. Homepage e páginas de serviços foram inspecionadas visualmente em 390 e 1440 px, com cobertura automatizada das dez larguras da homepage e quatro larguras das novas páginas.
+
+Os resultados atuais, o diagnóstico e as ações externas estão em [seo-audit.md](./seo-audit.md); o planejamento de conteúdo e autoridade está em [seo-roadmap.md](./seo-roadmap.md). Os arquivos de inspeção e as saídas de testes são temporários e podem ser removidos após a validação, preservando PDFs, materiais gráficos, feedbacks, skills e histórico Git.

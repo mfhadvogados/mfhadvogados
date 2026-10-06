@@ -15,7 +15,7 @@ const invalidContent =
   /lorem ipsum|projeto demonstrativo|profissional fictício/i;
 const forbiddenImage = /reserva/i;
 const officialImage =
-  /fotohero|fotoEquipe|flavioAugusto|rafaelaFernandes|francieleKarine|logo-v[12]|ricardoKaram|rodrigoMelendez|anaCarolineNascimento|tayanoLima|floeliDoPradoSantos/;
+  /fotohero|fotoEquipe|flavioAugusto|rafaelaFernandes|francieleKarine|logo-v[12]|ricardoKaram|rodrigoMelendez|anaCarolineNascimento|tayanoLima|floeliDoPradoSantos|anapaulapereira|marianaGuedes|lauraFenoci|michellePereira|rafaelaCardoso/;
 
 async function expectNoHorizontalOverflow(page: Page) {
   const overflow = await page.evaluate(
@@ -385,7 +385,7 @@ test("contato expõe canais confirmados e links internos têm destino", async ({
     contact.locator('a[href="tel:+5548999424925"]').first(),
   ).toBeVisible();
   await expect(
-    contact.locator('a[href="https://wa.me/5548999424925"]').first(),
+    contact.locator('a[href^="https://wa.me/5548999424925?text="]').first(),
   ).toBeVisible();
   await expect(
     page.locator('a[href="https://www.instagram.com/mfhadvempresa/"]').first(),
@@ -695,7 +695,7 @@ for (const viewport of [
       });
       await expect(floating).toHaveAttribute(
         "href",
-        "https://wa.me/5548999424925",
+        /^https:\/\/wa\.me\/5548999424925\?text=/,
       );
       await expect(floating).toHaveAttribute("target", "_blank");
       await expect(floating).toHaveAttribute("rel", /noopener/);

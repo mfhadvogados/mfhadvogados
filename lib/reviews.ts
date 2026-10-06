@@ -3,8 +3,13 @@ import rodrigo from "@/feedbacks/imgFeedback/rodrigoMelendez.png";
 import ana from "@/feedbacks/imgFeedback/anaCarolineNascimento.png";
 import tayano from "@/feedbacks/imgFeedback/tayanoLima.png";
 import floeli from "@/feedbacks/imgFeedback/floeliDoPradoSantos.png";
+import anaPaula from "@/feedbacks/imgFeedback/anapaulapereira.png";
+import mariana from "@/feedbacks/imgFeedback/marianaGuedes.png";
+import laura from "@/feedbacks/imgFeedback/lauraFenoci.png";
+import michelle from "@/feedbacks/imgFeedback/michellePereira.png";
+import rafaela from "@/feedbacks/imgFeedback/rafaelaCardoso.png";
 
-// Textos e fotos: feedbacks/. As cinco notas de 5 estrelas foram informadas pelo cliente.
+// Textos e fotos: feedbacks/. Todas as notas de 5 estrelas foram informadas pelo cliente.
 export const reviews = [
   {
     id: "ricardo-karam",
@@ -35,6 +40,36 @@ export const reviews = [
     name: "Floeli Do Prado Santos",
     avatar: floeli,
     text: "Excelente atendimento e profissionalismo. As doutoras demonstram domínio técnico, clareza nas orientações e comprometimento com o cliente. Recomendo com segurança. Estou muito satisfeita .",
+  },
+  {
+    id: "ana-paula-pereira",
+    name: "ana paula pereira",
+    avatar: anaPaula,
+    text: "Só tenho a agradecer todo o atendimento e trabalho feito das doutoras , já tinha passado por 2 advogados e não me deram esperanças, com elas consegui resposta rápida com menos de 1 ano o meu caso já estava resolvido e recebendo meus direitos, sempre muito atenciosas com respostas rápidas tirando todas as duvidas as melhores com certeza, indico de olhos fechados!!!!",
+  },
+  {
+    id: "mariana-guedes",
+    name: "Mariana Guedes",
+    avatar: mariana,
+    text: "O melhor e mais humano escritório de advocacia do Brasil! recomendo 100%",
+  },
+  {
+    id: "laura-fenoci",
+    name: "Laura Fenoci",
+    avatar: laura,
+    text: "Excelente porque o escritório é bem localizado, ambiente muito agradável e fui bem recebida.\nQuero salientar que o atendimento profissional é muito esclarecedor pois não fiquei com nenhuma dúvida.",
+  },
+  {
+    id: "michelle-pereira",
+    name: "Michelle Pereira",
+    avatar: michelle,
+    text: "Excelentes profissionais!\nMe deixaram esclarecida de todo o andamento do processo jurídico e foram dedicados na resolução do  caso rapidamente.",
+  },
+  {
+    id: "rafaela-cardoso",
+    name: "Rafaela Cardoso",
+    avatar: rafaela,
+    text: "Atendimento com excelência. Resolveram meu problema rapidamente, estou muito satisfeita com o trabalho do escritório.",
   },
 ] as const;
 

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { site } from "@/lib/site-content";
 import { siteUrl } from "@/lib/site-url";
+import { homeSeo, pageMetadata } from "@/lib/seo";
 import "./globals.css";
 import "@/components/site/chrome.css";
 
@@ -15,26 +16,13 @@ const montserrat = localFont({
 });
 
 export const metadata: Metadata = {
-  title: `${site.name} | Assessoria empresarial e contencioso`,
-  description: site.description,
+  ...pageMetadata(homeSeo),
+  metadataBase: new URL(siteUrl),
   applicationName: site.name,
-  ...(siteUrl
-    ? { metadataBase: new URL(siteUrl), alternates: { canonical: "/" } }
-    : {}),
-  openGraph: {
-    title: `${site.name} | Inteligência jurídica. Visão empresarial.`,
-    description: site.description,
-    siteName: site.name,
-    locale: "pt_BR",
-    type: "website",
-    ...(siteUrl ? { url: siteUrl } : {}),
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${site.name} | Assessoria empresarial e contencioso`,
-    description: site.description,
-  },
   robots: { index: true, follow: true },
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export const viewport: Viewport = {

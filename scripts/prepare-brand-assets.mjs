@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
@@ -64,14 +64,8 @@ async function createIcon(logo, size, padding, filename) {
 }
 
 async function createOpenGraph(logo) {
-  const photo = await sharp(join(artworkDirectory, "fotohero.jpg"))
-    .rotate()
-    .greyscale()
-    .resize(1200, 480, { fit: "cover", position: "north" })
-    .png()
-    .toBuffer();
   const { data: lockup, info } = await sharp(logo)
-    .resize(480, 118, { fit: "inside" })
+    .resize(900, 300, { fit: "inside" })
     .png()
     .toBuffer({ resolveWithObject: true });
 
@@ -79,15 +73,24 @@ async function createOpenGraph(logo) {
     create: { width: 1200, height: 630, channels: 4, background: white },
   })
     .composite([
-      { input: photo, left: 0, top: 0 },
       {
         input: lockup,
         left: Math.round((1200 - info.width) / 2),
-        top: 480 + Math.round((150 - info.height) / 2),
+        top: Math.round((630 - info.height) / 2),
       },
     ])
     .png({ compressionLevel: 9 })
     .toFile(join(projectRoot, "app", "opengraph-image.png"));
+}
+
+async function createPublicLogo(logo) {
+  const directory = join(projectRoot, "public", "marca");
+  await mkdir(directory, { recursive: true });
+  await sharp(logo)
+    .resize({ width: 1024 })
+    .flatten({ background: white })
+    .png({ compressionLevel: 9 })
+    .toFile(join(directory, "mfh-advogados-logo-preta.png"));
 }
 
 const symbol = await trimTransparentCanvas("logo-v2-preto@3x.png");
@@ -95,7 +98,8 @@ const lockup = await trimTransparentCanvas("logo-v1-preto@3x.png");
 await createIcon(symbol, 192, 20, "icon.png");
 await createIcon(symbol, 180, 18, "apple-icon.png");
 await createOpenGraph(lockup);
+await createPublicLogo(lockup);
 
 console.log(
-  "Identidade MFH gerada: icon.png, apple-icon.png, opengraph-image.png.",
+  "Identidade MFH gerada: ícones, compartilhamento e logo pública oficial.",
 );

@@ -10,7 +10,9 @@ export const site = {
   postalCode: "88015-900",
   phone: "(48) 99942-4925",
   phoneHref: "tel:+5548999424925",
-  whatsappHref: "https://wa.me/5548999424925",
+  whatsappHref: `https://wa.me/5548999424925?text=${encodeURIComponent(
+    "Olá! Gostaria de agendar um atendimento com o escritório MFH Advogados.",
+  )}`,
   instagramHref: "https://www.instagram.com/mfhadvempresa/",
   instagramHandle: "@mfhadvempresa",
   // Links do Google e Maps fornecidos pelo responsável pelo site.
@@ -51,6 +53,24 @@ export const contacts = {
   },
 } as const;
 export type ContactChannel = keyof typeof contacts;
+
+// Textos já presentes na homepage, centralizados sem alterar sua redação.
+export const institutionalCopy = {
+  practice: [
+    "Uma assessoria contínua para as decisões que fazem parte do negócio. Do suporte a gestores e RH às relações com clientes, fornecedores e sócios.",
+    "Orientação próxima e estratégica, sem a necessidade de estruturar um departamento jurídico interno.",
+  ],
+  prevention:
+    "Não atuamos apenas quando surge um problema. Conhecer o negócio e orientar suas escolhas é parte essencial do nosso trabalho.",
+  litigation: {
+    lead: "Estrutura para atuar como extensão operacional de departamentos jurídicos e grandes bancas.",
+    paragraphs: [
+      "Atuamos como parceiros de empresas e escritórios de advocacia, combinando condução estratégica de demandas e capacidade para gerir elevado volume processual.",
+      "Controle rigoroso de prazos, padronização de peças, atendimento dedicado e comunicação direta com departamentos jurídicos.",
+    ],
+    note: "Gestão processual com ferramentas digitais e acompanhamento por indicadores.",
+  },
+} as const;
 
 // Organização editorial dos serviços das páginas 2, 4 e 6 da apresentação.
 export const practiceAreas = [

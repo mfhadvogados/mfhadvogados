@@ -4,7 +4,7 @@ import { ContactLink } from "./ContactChannels";
 import { Brand } from "./Brand";
 import { GoogleIcon, InstagramIcon, WhatsAppIcon } from "./SocialIcons";
 
-export function Footer() {
+export function Footer({ homePath = "" }: { homePath?: "" | "/" }) {
   const year = new Intl.DateTimeFormat("pt-BR", {
     year: "numeric",
     timeZone: "America/Sao_Paulo",
@@ -16,7 +16,7 @@ export function Footer() {
         <div className="site-footer__top">
           <a
             className="site-footer__brand"
-            href="#inicio"
+            href={`${homePath}#inicio`}
             aria-label={`${site.name}, início`}
           >
             <Brand variant="monogram" tone="light" decorative />
@@ -48,14 +48,12 @@ export function Footer() {
             <ul>
               {navigation.map(({ label, href }) => (
                 <li key={href}>
-                  <a href={href}>{label}</a>
+                  <a href={`${homePath}${href}`}>{label}</a>
                 </li>
               ))}
-              {!navigation.some(({ href }) => String(href) === "#contato") && (
-                <li>
-                  <a href="#contato">Contato</a>
-                </li>
-              )}
+              <li>
+                <a href={`${homePath}#contato`}>Contato</a>
+              </li>
             </ul>
           </nav>
           <nav
@@ -66,7 +64,7 @@ export function Footer() {
             <ul>
               {practiceAreas.map(({ id, title }) => (
                 <li key={id}>
-                  <a href={`#atuacao-${id}`}>{title}</a>
+                  <a href={`${homePath}#atuacao-${id}`}>{title}</a>
                 </li>
               ))}
             </ul>

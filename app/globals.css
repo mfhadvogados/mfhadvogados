@@ -193,6 +193,11 @@ ol {
 .text-link:hover {
   border-color: var(--ink);
 }
+.service-page-link {
+  display: flex;
+  margin-top: 20px;
+  line-height: 1.6;
+}
 .sr-only {
   position: absolute;
   width: 1px;

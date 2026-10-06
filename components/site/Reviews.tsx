@@ -182,7 +182,7 @@ export function Reviews() {
               className="reviews__track"
               ref={trackRef}
               tabIndex={0}
-              aria-label="Cinco avaliações no Google"
+              aria-label={`${reviews.length} avaliações no Google`}
               aria-describedby="reviews-instructions"
               onKeyDown={handleKey}
             >

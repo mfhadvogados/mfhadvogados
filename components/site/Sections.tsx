@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowUpRight,
   Check,
@@ -12,6 +13,7 @@ import {
 import { assets } from "@/lib/site-assets";
 import {
   differentials,
+  institutionalCopy,
   litigationServices,
   litigationSteps,
   preventionSteps,
@@ -21,6 +23,7 @@ import { PracticeAreas } from "./PracticeAreas";
 import { StrategyFlow } from "./StrategyFlow";
 import { Brand } from "./Brand";
 import { ContactChannels } from "./ContactChannels";
+import { servicePages } from "@/lib/service-pages";
 
 export function About() {
   return (
@@ -101,19 +104,20 @@ export function Practice() {
             <br /> no dia a dia
             <br /> da sua empresa.
           </h2>
-          <p>
-            Uma assessoria contínua para as decisões que fazem parte do negócio.
-            Do suporte a gestores e RH às relações com clientes, fornecedores e
-            sócios.
-          </p>
-          <p>
-            Orientação próxima e estratégica, sem a necessidade de estruturar um
-            departamento jurídico interno.
-          </p>
+          {institutionalCopy.practice.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
           <a className="text-link" href="#contato">
             Converse com o escritório{" "}
             <ArrowUpRight size={18} aria-hidden="true" />
           </a>
+          <Link
+            className="text-link service-page-link"
+            href={servicePages.business.path}
+          >
+            {servicePages.business.name}{" "}
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </Link>
         </div>
         <PracticeAreas />
       </div>
@@ -135,10 +139,7 @@ export function Prevention() {
             Ao lado do empresário.
             <br /> Antes da decisão.
           </h2>
-          <p>
-            Não atuamos apenas quando surge um problema. Conhecer o negócio e
-            orientar suas escolhas é parte essencial do nosso trabalho.
-          </p>
+          <p>{institutionalCopy.prevention}</p>
         </div>
         <StrategyFlow
           id="prevention"
@@ -173,8 +174,7 @@ export function Litigation() {
             </h2>
           </div>
           <p className="litigation__lead">
-            Estrutura para atuar como extensão operacional de departamentos
-            jurídicos e grandes bancas.
+            {institutionalCopy.litigation.lead}
           </p>
         </div>
         <div className="litigation__body">
@@ -183,19 +183,20 @@ export function Litigation() {
               Qualidade técnica.
               <br /> Eficiência operacional.
             </h3>
-            <p>
-              Atuamos como parceiros de empresas e escritórios de advocacia,
-              combinando condução estratégica de demandas e capacidade para
-              gerir elevado volume processual.
-            </p>
-            <p>
-              Controle rigoroso de prazos, padronização de peças, atendimento
-              dedicado e comunicação direta com departamentos jurídicos.
-            </p>
+            {institutionalCopy.litigation.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
             <a className="button button-dark" href="#contato">
               Vamos construir uma parceria{" "}
               <ArrowUpRight aria-hidden="true" size={18} />
             </a>
+            <Link
+              className="text-link service-page-link"
+              href={servicePages.litigation.path}
+            >
+              {servicePages.litigation.name}{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
           </div>
           <ul
             className="litigation__services"
@@ -217,8 +218,7 @@ export function Litigation() {
             steps={litigationSteps}
           />
           <p className="litigation__note">
-            Gestão processual com ferramentas digitais e acompanhamento por
-            indicadores.
+            {institutionalCopy.litigation.note}
           </p>
         </div>
       </div>

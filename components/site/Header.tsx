@@ -13,19 +13,20 @@ import {
 import { navigation, site } from "@/lib/site-content";
 import { Brand } from "./Brand";
 
-export function Header() {
+export function Header({ homePath = "" }: { homePath?: "" | "/" }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("#inicio");
   const pendingAnchor = useRef<string | null>(null);
-  const menuNavigation = navigation.filter(
-    ({ href }) => String(href) !== "#contato",
-  );
 
   function navigateFromMenu(
     event: MouseEvent<HTMLAnchorElement>,
     href: string,
   ) {
+    if (homePath) {
+      setOpen(false);
+      return;
+    }
     event.preventDefault();
     pendingAnchor.current = href;
     setActiveSection(href);
@@ -77,17 +78,17 @@ export function Header() {
       <div className="container site-header__inner">
         <a
           className="site-header__brand"
-          href="#inicio"
+          href={`${homePath}#inicio`}
           aria-label={`${site.name}, início`}
           onClick={() => setActiveSection("#inicio")}
         >
           <Brand tone="dark" decorative />
         </a>
         <nav className="desktop-nav" aria-label="Navegação principal">
-          {menuNavigation.map(({ label, href }) => (
+          {navigation.map(({ label, href }) => (
             <a
               key={href}
-              href={href}
+              href={`${homePath}${href}`}
               aria-current={activeSection === href ? "location" : undefined}
               onClick={() => setActiveSection(href)}
             >
@@ -95,7 +96,10 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <a className="button button-dark site-header__cta" href="#contato">
+        <a
+          className="button button-dark site-header__cta"
+          href={`${homePath}#contato`}
+        >
           Contato
           <ArrowUpRight size={17} strokeWidth={1.3} aria-hidden="true" />
         </a>
@@ -141,7 +145,7 @@ export function Header() {
             <div className="mobile-menu__top">
               <SheetClose asChild>
                 <a
-                  href="#inicio"
+                  href={`${homePath}#inicio`}
                   aria-label={`${site.name}, início`}
                   onClick={(event) => navigateFromMenu(event, "#inicio")}
                 >
@@ -162,10 +166,10 @@ export function Header() {
             </SheetDescription>
             <div className="mobile-menu__body">
               <nav className="mobile-nav" aria-label="Navegação mobile">
-                {menuNavigation.map(({ label, href }) => (
+                {navigation.map(({ label, href }) => (
                   <SheetClose asChild key={href}>
                     <a
-                      href={href}
+                      href={`${homePath}${href}`}
                       aria-current={
                         activeSection === href ? "location" : undefined
                       }
@@ -185,7 +189,7 @@ export function Header() {
                 <SheetClose asChild>
                   <a
                     className="button button-light"
-                    href="#contato"
+                    href={`${homePath}#contato`}
                     onClick={(event) => navigateFromMenu(event, "#contato")}
                   >
                     Falar com o escritório
